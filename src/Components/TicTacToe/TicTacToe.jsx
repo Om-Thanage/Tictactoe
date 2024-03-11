@@ -36,15 +36,8 @@ const TicTacToe = () =>{
             data[num] = "o";
             setCount(++count);
         }
+        checkWin();
         
-        const value = "";
-        const doesExist = data.includes(value);
-        if (doesExist){
-            checkWin();
-        }
-        else{
-            titleref.current.innerHTML = `It's a draw`;
-        }
         
     }
     const checkWin = () =>{
@@ -75,6 +68,9 @@ const TicTacToe = () =>{
         else if (data[2]===data[4] && data[4]===data[6] && data[6]!==""){
             won(data[6]);
         }
+        else if (!data.includes("")){
+            titleref.current.innerHTML = `It's a draw`;
+        }
     }
 
     const won = (winner)=>{
@@ -90,15 +86,17 @@ const TicTacToe = () =>{
     const reset = ()=>{
         setlock(false);
         data = ["","","","","","","","",""];
-        titleref.current.innerHTML = `Tic Tac Toe`;
+        titleref.current.innerHTML = `Tic Tac Toe - '${count % 2 === 0 ? "X's Turn" : "O's Turn"}'`;
+        count = 0;
         box_array.map((e)=>{
             e.current.innerHTML = "";
         })
         
+        
     }
     return (
         <div className='container'>
-            <h1 className="title" ref={titleref}>Tic Tac Toe</h1>
+            <h1 className="title" ref={titleref}>Tic Tac Toe - {count % 2 === 0 ? "X's Turn" : "O's Turn"}</h1>
             <div className="board">
                 <div className="row1">
                     <div className="boxes" ref={box1}onClick={(e)=>{toggle(e,0)}}></div>
