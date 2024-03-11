@@ -69,6 +69,7 @@ const TicTacToe = () =>{
         else if (data[2]===data[4] && data[4]===data[6] && data[6]!==""){
             won(data[6]);
         }
+        //draw
         else if (!data.includes("")){
             titleref.current.innerHTML = `It's a draw`;
         }
@@ -77,12 +78,14 @@ const TicTacToe = () =>{
     const won = (winner)=>{
         setlock(true);
         if(winner === "x"){
-            titleref.current.innerHTML = `Congrats <img src = '${cross_icon}'>`;
-            turnref.current.innerHTML = `Player 1 wins`;
+            
+            titleref.current.innerHTML = `Player 1 wins`;
+            turnref.current.innerHTML = `Congrats`;
         }
         else if(winner === "o"){
-            titleref.current.innerHTML = `Congrats <img src = '${circle_icon}'>`;
-            turnref.current.innerHTML = `Player 2 wins`;
+            
+            titleref.current.innerHTML = `Player 2 wins`;
+            turnref.current.innerHTML = `Congrats`;
         }
 
     }
@@ -91,9 +94,10 @@ const TicTacToe = () =>{
         setlock(false);
         data = ["","","","","","","","",""];
         titleref.current.innerHTML = `Tic Tac Toe`;
+        
         setCount(0);
 
-        turnref.current.innerHTML = `'${count % 2 === 0 ? "Player 1's Turn" : "Player 2's Turn"}'`;
+        turnref.current.innerHTML = `${count % 2 === 0 ? "Player 1's Turn" : "Player 2's Turn"}`;
         
         box_array.map((e)=>{
             e.current.innerHTML = "";
@@ -104,7 +108,7 @@ const TicTacToe = () =>{
     return (
         <div className='container'>
             <h1 className="title" ref={titleref}>Tic Tac Toe</h1>
-            <h1 className="title" ref={turnref}>${count % 2 === 0 ? "Player 1's Turn" : "Player 2's Turn"}</h1>
+            <h1 className="title" ref={turnref}>{count % 2 === 0 ? "Player 1's Turn" : "Player 2's Turn"}</h1>
             <div className="board">
                 <div className="row1">
                     <div className="boxes" ref={box1}onClick={(e)=>{toggle(e,0)}}></div>
@@ -122,7 +126,7 @@ const TicTacToe = () =>{
                     <div className="boxes" ref={box9}onClick={(e)=>{toggle(e,8)}}></div>
                 </div>
             </div> 
-            <button className="reset" onClick={()=>{reset()}}>Reset</button>
+            <button className="reset" onClick={() => reset()}>Reset</button>
         </div>
     )
 }
