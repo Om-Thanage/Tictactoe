@@ -3,7 +3,7 @@ import './TicTacToe.css'
 import circle_icon from '../Assets/o.png'
 import cross_icon from '../Assets/x.png'
 
-let data = ["","","","","","","","","",];
+let data = ["","","","","","","","",""];
 
 const TicTacToe = () =>{
 
@@ -80,10 +80,10 @@ const TicTacToe = () =>{
     const won = (winner)=>{
         setlock(true);
         if(winner === "x"){
-            titleref.current.innerHTML = `Congrats : <img src = '${cross_icon}'> you won`;
+            titleref.current.innerHTML = `Congrats <img src = '${cross_icon}'>`;
         }
         else if(winner === "o"){
-            titleref.current.innerHTML = `Congrats : <img src = '${circle_icon}'> you won`;
+            titleref.current.innerHTML = `Congrats <img src = '${circle_icon}'>`;
         }
     }
 
