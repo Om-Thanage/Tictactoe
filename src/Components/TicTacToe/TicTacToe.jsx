@@ -87,7 +87,6 @@ const TicTacToe = () =>{
         setlock(false);
         data = ["","","","","","","","",""];
         titleref.current.innerHTML = `Tic Tac Toe - '${count % 2 === 0 ? "X's Turn" : "O's Turn"}'`;
-        count = 0;
         box_array.map((e)=>{
             e.current.innerHTML = "";
         })
