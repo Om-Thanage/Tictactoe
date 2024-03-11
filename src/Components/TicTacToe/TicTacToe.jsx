@@ -92,7 +92,8 @@ const TicTacToe = () =>{
         data = ["","","","","","","","",""];
         titleref.current.innerHTML = `Tic Tac Toe`;
         setCount(0);
-        turnref.current.innerHTML = `${count % 2 === 0 ? "X's Turn" : "O's Turn"}`;
+
+        turnref.current.innerHTML = count % 2 === 0 ? "Player 1's Turn" : "Player 2's Turn";
         
         box_array.map((e)=>{
             e.current.innerHTML = "";
@@ -103,7 +104,7 @@ const TicTacToe = () =>{
     return (
         <div className='container'>
             <h1 className="title" ref={titleref}>Tic Tac Toe</h1>
-            <h1 className="title" ref={turnref}>${count % 2 === 0 ? "X's Turn" : "O's Turn"}</h1>
+            <h1 className="title" ref={turnref}>${count % 2 === 0 ? "Player 1's Turn" : "Player 2's Turn"}</h1>
             <div className="board">
                 <div className="row1">
                     <div className="boxes" ref={box1}onClick={(e)=>{toggle(e,0)}}></div>
