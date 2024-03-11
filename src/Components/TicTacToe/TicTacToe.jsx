@@ -10,6 +10,7 @@ const TicTacToe = () =>{
     let [count,setCount] = useState(0);
     let [lock,setlock] = useState(false);
     let titleref = useRef(null);
+    let turnref = useRef(null);
     let box1 = useRef(null);
     let box2 = useRef(null);
     let box3 = useRef(null);
@@ -77,25 +78,30 @@ const TicTacToe = () =>{
         setlock(true);
         if(winner === "x"){
             titleref.current.innerHTML = `Congrats <img src = '${cross_icon}'>`;
+            turnref.current.innerHTML = `Player 1 wins`;
         }
         else if(winner === "o"){
             titleref.current.innerHTML = `Congrats <img src = '${circle_icon}'>`;
+            turnref.current.innerHTML = `Player 2 wins`;
         }
+        turnref.current.innerHTML = `${winner === "x" ? "Player 1 wins" : "Player 2 wins"}`;
     }
 
     const reset = ()=>{
         setlock(false);
         data = ["","","","","","","","",""];
-        titleref.current.innerHTML = `Tic Tac Toe - '${count % 2 === 0 ? "X's Turn" : "O's Turn"}'`;
+        titleref.current.innerHTML = `Tic Tac Toe`;
+        turnref.current.innerHTML = `${count % 2 === 0 ? "X's Turn" : "O's Turn"}`;
         box_array.map((e)=>{
             e.current.innerHTML = "";
         })
-        
+        setCount(0);
         
     }
     return (
         <div className='container'>
-            <h1 className="title" ref={titleref}>Tic Tac Toe - {count % 2 === 0 ? "X's Turn" : "O's Turn"}</h1>
+            <h1 className="title" ref={titleref}>Tic Tac Toe</h1>
+            <h1 className="title" ref={turnref}>${count % 2 === 0 ? "X's Turn" : "O's Turn"}</h1>
             <div className="board">
                 <div className="row1">
                     <div className="boxes" ref={box1}onClick={(e)=>{toggle(e,0)}}></div>
