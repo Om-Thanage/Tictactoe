@@ -24,7 +24,7 @@ const TicTacToe = () =>{
     let box_array = [box1,box2,box3,box4,box5,box6,box7,box8,box9];
 
     const toggle = (e,num)=>{
-        if (lock){
+        if (lock || e.target.innerHTML !== "" || data[num] !== ""){
             return 0;
         }
         if (count%2 === 0){
@@ -84,18 +84,20 @@ const TicTacToe = () =>{
             titleref.current.innerHTML = `Congrats <img src = '${circle_icon}'>`;
             turnref.current.innerHTML = `Player 2 wins`;
         }
-        turnref.current.innerHTML = `${winner === "x" ? "Player 1 wins" : "Player 2 wins"}`;
+
     }
 
     const reset = ()=>{
         setlock(false);
         data = ["","","","","","","","",""];
         titleref.current.innerHTML = `Tic Tac Toe`;
+        setCount(0);
         turnref.current.innerHTML = `${count % 2 === 0 ? "X's Turn" : "O's Turn"}`;
+        
         box_array.map((e)=>{
             e.current.innerHTML = "";
         })
-        setCount(0);
+        
         
     }
     return (
