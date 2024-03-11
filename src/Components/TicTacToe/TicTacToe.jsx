@@ -93,7 +93,7 @@ const TicTacToe = () =>{
         titleref.current.innerHTML = `Tic Tac Toe`;
         setCount(0);
 
-        turnref.current.innerHTML = count % 2 === 0 ? "Player 1's Turn" : "Player 2's Turn";
+        turnref.current.innerHTML = `'${count % 2 === 0 ? "Player 1's Turn" : "Player 2's Turn"}'`;
         
         box_array.map((e)=>{
             e.current.innerHTML = "";
